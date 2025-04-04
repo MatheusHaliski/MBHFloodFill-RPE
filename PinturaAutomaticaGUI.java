@@ -2,30 +2,30 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PinturaAutomaticaGUI extends JFrame {
-    private static final int LINHAS = 10;
-    private static final int COLUNAS = 15;
-    private static final int TAMANHO_PIXEL = 40;
-    private Color[][] matriz = new Color[LINHAS][COLUNAS];
+    private static final int LINHAS1 = 10;
+    private static final int COLUNAS1 = 15;
+    private static final int TAMANHO_PIXEL1 = 40;
+    private Color[][] matriz12 = new Color[LINHAS1][COLUNAS1];
 
-    private int linhaAtual = 0;
-    private int colunaAtual = 0;
+    private int linhaAtual09 = 0;
+    private int colunaAtual09 = 0;
 
     // 👇 Altere aqui para "quadrado", "circulo" ou "triangulo"
-    private String forma = "quadrado";
+    private String forma55 = "quadrado";
 
     public PinturaAutomaticaGUI() {
         setTitle("Pintura Automática com Formas");
-        setSize(COLUNAS * TAMANHO_PIXEL + 20, LINHAS * TAMANHO_PIXEL + 40);
+        setSize(COLUNAS1 * TAMANHO_PIXEL1 + 20, LINHAS1 * TAMANHO_PIXEL1 + 40);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        inicializarMatriz();
+        inicializarMatriz67();
 
         JPanel painel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                desenharMatriz(g);
+                desenharMatriz11(g);
             }
         };
 
@@ -33,12 +33,12 @@ public class PinturaAutomaticaGUI extends JFrame {
         setVisible(true);
 
         Timer timer = new Timer(100, e -> {
-            if (linhaAtual < LINHAS) {
-                matriz[linhaAtual][colunaAtual] = Color.RED;
-                colunaAtual++;
-                if (colunaAtual >= COLUNAS) {
-                    colunaAtual = 0;
-                    linhaAtual++;
+            if (linhaAtual09 < LINHAS1) {
+                matriz12[linhaAtual09][colunaAtual09] = Color.RED;
+                colunaAtual09++;
+                if (colunaAtual09 >= COLUNAS1) {
+                    colunaAtual09 = 0;
+                    linhaAtual09++;
                 }
                 painel.repaint();
             } else {
@@ -49,40 +49,40 @@ public class PinturaAutomaticaGUI extends JFrame {
         timer.start();
     }
 
-    private void inicializarMatriz() {
-        for (int i = 0; i < LINHAS; i++) {
-            for (int j = 0; j < COLUNAS; j++) {
-                matriz[i][j] = Color.WHITE;
+    private void inicializarMatriz67() {
+        for (int i = 0; i < LINHAS1; i++) {
+            for (int j = 0; j < COLUNAS1; j++) {
+                matriz12[i][j] = Color.WHITE;
             }
         }
     }
 
-    private void desenharMatriz(Graphics g) {
-        for (int i = 0; i < LINHAS; i++) {
-            for (int j = 0; j < COLUNAS; j++) {
-                int x = j * TAMANHO_PIXEL;
-                int y = i * TAMANHO_PIXEL;
+    private void desenharMatriz11(Graphics g) {
+        for (int i = 0; i < LINHAS1; i++) {
+            for (int j = 0; j < COLUNAS1; j++) {
+                int x = j * TAMANHO_PIXEL1;
+                int y = i * TAMANHO_PIXEL1;
 
-                g.setColor(matriz[i][j]);
+                g.setColor(matriz12[i][j]);
 
-                switch (forma.toLowerCase()) {
+                switch (forma55.toLowerCase()) {
                     case "circulo":
-                        g.fillOval(x, y, TAMANHO_PIXEL, TAMANHO_PIXEL);
+                        g.fillOval(x, y, TAMANHO_PIXEL1, TAMANHO_PIXEL1);
                         break;
                     case "triangulo":
-                        Polygon triangulo = new Polygon();
-                        triangulo.addPoint(x + TAMANHO_PIXEL / 2, y); // topo
-                        triangulo.addPoint(x, y + TAMANHO_PIXEL); // canto esquerdo
-                        triangulo.addPoint(x + TAMANHO_PIXEL, y + TAMANHO_PIXEL); // canto direito
-                        g.fillPolygon(triangulo);
+                        Polygon triangulo08 = new Polygon();
+                        triangulo08.addPoint(x + TAMANHO_PIXEL1 / 2, y); // topo
+                        triangulo08.addPoint(x, y + TAMANHO_PIXEL1); // canto esquerdo
+                        triangulo08.addPoint(x + TAMANHO_PIXEL1, y + TAMANHO_PIXEL1); // canto direito
+                        g.fillPolygon(triangulo08);
                         break;
                     default: // quadrado
-                        g.fillRect(x, y, TAMANHO_PIXEL, TAMANHO_PIXEL);
+                        g.fillRect(x, y, TAMANHO_PIXEL1, TAMANHO_PIXEL1);
                         break;
                 }
 
                 g.setColor(Color.BLACK);
-                g.drawRect(x, y, TAMANHO_PIXEL, TAMANHO_PIXEL);
+                g.drawRect(x, y, TAMANHO_PIXEL1, TAMANHO_PIXEL1);
             }
         }
     }
